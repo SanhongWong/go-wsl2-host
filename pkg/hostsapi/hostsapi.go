@@ -174,6 +174,9 @@ func (h *HostsAPI) Write() error {
 		if e.Comment != "" {
 			comment = fmt.Sprintf("    # %s", e.Comment)
 		}
+		if len(e.Hostname) <= 0 {
+			continue
+		}
 		outbuf.WriteString(fmt.Sprintf("%s %s%s\r\n", e.IP, e.Hostname, comment))
 	}
 
